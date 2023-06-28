@@ -15,21 +15,17 @@ const pigLatin = (word) => {
 
   // Your code here
   let pigWord = word.toLowerCase().trim();
-  let isVowel = false;
   let vowels = ['a', 'e', 'i', 'o', 'u']
   let pig = '';
   let cutOff = 0;
-  if (vowels.indexOf(pigWord[0]) > -1) {
-    isVowel = true;
+  for (let i = pigWord.length; i >= 0; i--) {
+    if (vowels.indexOf(pigWord[i]) > -1) {
+      cutOff = i;
+    }
   }
-  if (isVowel) {
+  if (cutOff == 0) {
     pig = pigWord + 'yay';
   } else {
-    for (let i = pigWord.length; i > 0; i--) {
-      if (vowels.indexOf(pigWord[i]) > -1) {
-        cutOff = i;
-      }
-    }
     pig = pigWord.slice(cutOff) + pigWord.slice(0, cutOff) + 'ay';
   }
   return pig;
